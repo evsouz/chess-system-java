@@ -43,6 +43,9 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessExeption("There is no piece on souce position");
 		}
+		if (!board.piece(position).isThereAnyPossibleMove()) {
+			throw new ChessExeption("There is not moves for the cosen piece");
+		}
 	}
 	
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
