@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -41,10 +42,16 @@ public class UI {
 			int row = Integer.parseInt(s.substring(1));
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
-			throw new InputMismatchException("Error reading ChessPostin.valid values are from al to h8.");
+			throw new InputMismatchException("Error reading ChessPostin. Valid values are from al to h8.");
 		}
 	}
 
+	public static void printMatch(ChessMatch chesMatch) {
+		printBoard(chesMatch.getPieces());
+		System.out.println();
+		System.out.println("Turn : " + chesMatch.getTurn());
+		System.out.println("Waiting player: " + chesMatch.getCurrentPlayer());
+	}
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
